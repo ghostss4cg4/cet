@@ -1,0 +1,80 @@
+---
+FORMAT: TOON (Token-Oriented Object Notation)
+SOURCE: Gemini's Real-Time Verification Protocol
+PROJECT: CET Error Detection & Prevention System
+---
+
+verification_sentinels[3]{id,sentinel_name,target,what_it_checks,verification_rule,how_to_calculate,acceptable_range,catches_what,execution_time_sec}:
+  1,"Z-Factor Guard","1.2","Physical feasibility of iterated molar volume (Cubic EOS vapor/liquid)","Compressibility Factor Z should be within physical bounds for the phase (vapor: 0.6-0.95; liquid: 0.1-0.3)","Z = (P × V) / (R × T). Plug in converged V, system P, T, and R.","Vapor: 0.60 ≤ Z ≤ 0.95 | Liquid: 0.10 ≤ Z ≤ 0.30","Drift into wrong root (liquid formula used for vapor); iteration divergence; miscalculated a/b constants; sign errors in formula; V₀ starting guess too far from true root","10"
+  2,"Mean Cp Shadow","1.1","High-risk polynomial integration accuracy check (sensible heat integral)","Integrated ΔH should match a linear Cp approximation within ±5%","Find T_avg = (T₁+T₂)/2. Calculate quick Cp ≈ A + B(T_avg) + C(T_avg)². Then: ΔH_approx = Cp × ΔT × R. Compare to full integration result.","Full result within ±5% of linear approx | If >10% deviation: bracket error, missing scientific notation, or sign error in integration blocks","Missing 10⁻³ or 10⁶ multipliers; bracket errors in polynomial assembly; wrong temperature deltas (ΔT vs T₂-T₁); M+ accumulation errors; 1/T term sign flip","15"
+  3,"Boundary Check","1.3","Virial Work validation against ideal gas baseline (isothermal compression)","Real gas work (Virial) must be slightly larger than ideal gas work because intermolecular forces add resistance","W_ideal = RT ln(P₂/P₁). Calculate and compare to W_virial result. Ratio should be: W_virial / W_ideal ≈ 1.10 to 1.20","Ratio 1.10–1.20 is healthy | Ratio <1.05 indicates sign error on B or C | Ratio >1.30 indicates arithmetic error in chunk assembly | Ratio <0.90 indicates completely wrong formula","Wrong signs on B or C correction factors (adding instead of subtracting); missing 0.1 unit multiplier; calculation of V₁ or V₂ error; arithmetic in chunk addition (M+ misuse)","20"
+
+---
+SENTINEL EXECUTION SEQUENCE (How to Deploy in Exam):
+-------------------------------------------------------
+AFTER Target 1.2 (Cubic EOS):
+1. You have converged V_vapor ≈ 2447.6 cm³/mol
+2. Calculate Z: (P × V) / (R × T) = (9.4573 × 2447.6) / (83.14 × 350)
+3. Expected Z ≈ 0.70-0.85 for vapor of n-butane
+4. If Z > 0.95 or Z < 0.60: STOP. Iteration failed. Restart.
+5. If Z in range: CONFIRM answer, move to next question. (Execution: 10 seconds)
+
+AFTER Target 1.1 (Sensible Heat):
+1. You have ΔH_integrated ≈ 16686 J/mol
+2. Find T_avg = (300 + 500) / 2 = 400 K
+3. Quick Cp: A + B(400) + C(400)² = 12.5 + (−35×10⁻³)×400 + ... ≈ 0 (placeholder)
+4. ΔH_approx = Cp × (500-300) × 8.314
+5. Compare: |16686 - ΔH_approx| / ΔH_approx should be <5%
+6. If deviation >10%: Recalculate T blocks, check for missing powers of 10. (Execution: 15 seconds)
+
+AFTER Target 1.3 (Virial Work):
+1. You have W_virial ≈ 9064.5 J/mol (from 3-chunk assembly)
+2. Calculate W_ideal: W_ideal = 8.314 × 350 × ln(55/2) = 8.314 × 350 × ln(27.5) ≈ ?
+3. Ratio: 9064.5 / W_ideal should be 1.10-1.20
+4. If ratio <1.05: Check signs on B and C terms (did you subtract or add?)
+5. If ratio >1.30: Recalculate chunk sums; verify 0.1 multiplier was applied. (Execution: 20 seconds)
+
+---
+SENTINEL DECISION TREE:
+-----------------------
+Z-Guard Result?
+├─ 0.60 ≤ Z ≤ 0.95: ✓ PASS. Vapor volume confirmed. Move on.
+├─ Z > 0.95: ⚠ WARNING. Close to liquid boundary. Check: Did you use vapor or liquid iteration? If liquid, result is wrong.
+├─ Z < 0.60: ❌ FAIL. You are in the liquid region. Recalculate using liquid iteration formula from Target 1.2.
+└─ Z < 0.10: ❌ CATASTROPHIC FAIL. Constants a/b are massively wrong. Restart Phase 1 (calculate a and b again).
+
+Mean Cp Shadow Result?
+├─ ±5% deviation: ✓ PASS. Integration accuracy confirmed. Move on.
+├─ 5-10% deviation: ⚠ WARNING. Recalculate the T-blocks; verify scientific notation.
+├─ >10% deviation: ❌ FAIL. High probability of bracket error or 10ⁿ mistake. Recalculate.
+└─ Negative ΔH (should be positive for heating): ❌ SIGN ERROR. Temperature order is reversed or a coefficient has wrong sign.
+
+Boundary Check Result?
+├─ 1.10 ≤ ratio ≤ 1.20: ✓ PASS. Virial work is physically consistent. Move on.
+├─ 1.05-1.10 or 1.20-1.30: ⚠ CAUTION. Ratio is borderline. Double-check B coefficient sign.
+├─ Ratio < 1.05: ❌ FAIL (Sign Error). B or C term likely has + instead of −. Recalculate chunk 2 or 3.
+├─ Ratio > 1.30: ❌ FAIL (Arithmetic Error). M+ vault or final sum is wrong. Recalculate chunk assembly.
+└─ W_virial < 0 but should be positive: ❌ SIGN CONVENTION ERROR. Check if you subtracted instead of added chunks.
+
+---
+SENTINEL TIME BUDGET:
+---------------------
+Total 3 sentinels: 10 + 15 + 20 = 45 seconds
+Integrated into workflow: After Target 1.2 (10s), after Target 1.1 (15s), after Target 1.3 (20s)
+Total exam overhead for sentinels: <1 minute
+Marks saved by early error detection: 7 + 7 + 8 = 22 marks (73% of paper)
+
+---
+BONUS SENTINELS (Optional, if time permits):
+----------------------------------------------
+Sentinel 4: Sign Convention Check (Target 2.1)
+Rule: If Q comes out negative, explicitly state "Heat is REMOVED from system" (not "negative heat added")
+Execution: 5 seconds
+Why: Graders look for interpretation, not just arithmetic
+
+Sentinel 5: Unit Verification (Target 1.3)
+Rule: Final work answer should be in J/mol or kJ/mol range (1000-20000 J/mol typical for compression)
+Execution: 5 seconds
+Catches: Forgetting 0.1 multiplier (would give 1000× too large)
+
+---
