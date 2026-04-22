@@ -1,0 +1,89 @@
+---
+FORMAT: TOON (Token-Oriented Object Notation)
+SOURCE: Gemini's Hardware-Specific Optimization for Casio FX-82MS
+PROJECT: CET Calculator Weaponization
+---
+
+calculator_protocols[3]{id,protocol_name,targets,when_to_use,how_it_works,keystroke_sequence,failure_mode,recovery}:
+  1,"ANS Loop (Recursive Substitution)",1.2;1.3,"Finding converged roots for iteration (cubic EOS vapor/liquid; virial volume)","Seed initial guess, program formula using ANS as variable, press = repeatedly until number stabilizes (convergence = first 2 decimals freeze)","Seed: 3076.9 → = | Program: [formula with ANS] | Press = iteratively (5-12 times) | Read final value","M+ contamination: Adding new root to old root instead of replacing. Causes denominator to inflate wildly (false spike to 500+)","NEVER mix with M+. If numbers diverge: Clear calculator, re-type ANS loop formula exactly, start over with correct initial guess."
+  2,"M+ Memory Vault (Chunk Assembly)",1.1;1.3,"Adding mathematical fragments without bracket syntax errors (polynomial integration, work assembly)","Calculate single block, press M+ to store. Calculate next block, press M+. Finally press RCL M+ to extract sum.","Block 1: [calc] → M+ | Block 2: [calc] → M+ | Block 3: [calc] → M+ | RCL M+ (reads sum) | MR (clears memory)","Pressing = instead of M+: Causes calculator to REPLACE memory instead of ADD to it. Only last block is retained.","After each M+, verify you see 'M' indicator on screen. Before final RCL M+, press 0 + M+ to ensure memory is initialized clean."
+  3,"2000-Divisor Unit Trap",2.1,"Converting kinetic energy from J/kg to kJ/kg within SFEE formula (velocity in m/s → thermodynamic equation in kJ)","Pre-bake unit conversion into the fraction: use 2000 in denominator instead of 2. Formula: ΔH + (u₂²-u₁²)/2000 = Q + Ws","Direct: (700² - 0²) / 2000 → (490000 / 2000) → 245 kJ/kg","Dividing by 2 alone: Kinetic energy becomes 1000× too large, destroying SFEE balance. Or dividing by 1000 alone: Forgets the 1/2 from kinetic formula.","Always write 2000, never 2 or 1000. Verify: If your kinetic term is >50% of enthalpy/work magnitude, you likely divided by 2."
+
+---
+PROTOCOL INTERACTION MATRIX:
+----------------------------
+Which protocol for each target?
+
+Target 1.1 (Sensible Heat): M+ ONLY (3 blocks → sum)
+Target 1.2 (Cubic EOS): ANS ONLY (vapor iteration, then liquid iteration)
+Target 1.3 (Virial Work): ANS (for V₂ iteration) THEN M+ (for 3-chunk assembly)
+Target 2.1 (SFEE): 2000-Divisor ONLY (direct arithmetic, no looping)
+Target 2.2 (PV Matrix): Standard algebra (no special protocol)
+Target 2.3 (Derivation): N/A (theory question, no calculator)
+
+⚠️ CRITICAL RULE: NEVER MIX PROTOCOLS
+----
+ANS + M+ = CATASTROPHE (runaway sum in iterative loop)
+M+ + ANS = CATASTROPHE (memory corruption in recursion)
+2000 + 2 = FAILURE (unit trap nullified)
+
+---
+CASIO FX-82MS SPECIFIC LIMITATIONS & WORKAROUNDS:
+-------------------------------------------------
+Limitation 1: No Natural Display (no fraction rendering)
+Workaround: Use Chunking Protocol to break massive expressions into bite-sized parts
+
+Limitation 2: No Auto-Integration (no ∫ dx button)
+Workaround: Pre-integrate formula mathematically on paper, use calculator only for arithmetic
+
+Limitation 3: Limited Bracket Nesting (max 18 opening brackets)
+Workaround: Calculate largest terms first, use M+ to store, assemble at end
+
+Limitation 4: No memory for formulas (can't save equation strings)
+Workaround: Memorize the exact ANS loop sequence; drill until muscle memory replaces reading
+
+---
+KEYSTROKE DRILL SEQUENCES:
+
+SEQUENCE 1: ANS Loop for Vapor Root (Target 1.2, n=5 iterations)
+Step 1: [3076.9] [=]                                          (seed: V₀)
+Step 2: [3076.9] [+] [80.67] [-] [(] [16186981] [÷] [9.4573] [)] [×] (setup)
+Step 3: [ANS] [(] [ANS] [+] [80.67] [)] [÷] [ANS] [×] [ANS] [+] [80.67] [=]
+Step 4: [=] [=] [=] [=] [=]                                  (iterations 1-5)
+Final: Read V_vapor on display (should stabilize ~2447.6 cm³/mol)
+
+SEQUENCE 2: M+ Chunking for Sensible Heat (Target 1.1, 3 blocks)
+Step 1: [Block_1_calc] [M+]                                   (T difference term)
+Step 2: [Block_2_calc] [M+]                                   (T² difference term)
+Step 3: [Block_3_calc] [M+]                                   (T³ or 1/T term)
+Step 4: [RCL] [M+] or [RCL] [M]                               (read sum)
+Step 5: [×] [8.314] [=]                                       (multiply by R)
+Final: Read ΔH on display (should be in J/mol range: 6000-17000)
+
+SEQUENCE 3: 2000-Divisor Direct Calc (Target 2.1)
+Step 1: [(] [700] [x²] [-] [0] [x²] [)] [÷] [2000] [=]      (kinetic energy)
+Step 2: [+] [0] [+] [280] [=]                                 (SFEE assembly)
+Step 3: [AC] (clear) [Ans] [-] [280] [=]                      (solve for Q)
+Final: Read Q (should be around -35 to +200 kJ/kg depending on process)
+
+---
+ERROR RECOVERY PROTOCOL:
+------------------------
+If ANS Loop Shows Wild Oscillation (e.g., 500+, then 100, then 5000):
+→ You have mixed ANS + M+ protocols
+→ Clear memory: [MC] or [Del]
+→ Restart ANS loop with fresh initial guess
+→ Do NOT attempt to salvage calculation
+
+If M+ Vault Shows Only Last Block Value:
+→ You pressed [=] instead of [M+]
+→ Clear memory: [MC]
+→ Recalculate all 3 blocks, pressing M+ after EACH
+→ Verify 'M' appears on screen after each M+
+
+If 2000-Divisor Gives Kinetic Energy > Enthalpy:
+→ You divided by 2 or 1000, not 2000
+→ Redo: (700² - 0²) = 490000 → ÷ 2000 = 245 (correct)
+→ If you got 245000 or 24500, wrong divisor was used
+
+---
