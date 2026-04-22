@@ -1,0 +1,185 @@
+---
+FORMAT: TOON (Token-Oriented Object Notation)
+SOURCE: Gemini's 90-Minute Exam Time Allocation Strategy
+PROJECT: CET Temporal Weaponization
+---
+
+exam_timeline[6]{phase,target,start_min,end_min,duration_min,marks_earned,cumulative_marks,cumulative_time_pct}:
+  1,"1.1 Sensible Heat (Warm-up)","0","6","6","7","7","6.7%"
+  2,"1.2 Cubic EOS (Muscle Memory)","6","11","5","7","14","12.2%"
+  3,"1.3 Virial Work (Peak Complexity)","11","19","8","8","22","21.1%"
+  4,"2.1 SFEE (Speed-Run)","19","24","5","4","26","26.7%"
+  5,"2.2 PV Matrix (Algebra)","24","32","8","6","32","35.6%"
+  6,"2.3 Derivation (Theory Proof)","32","39","7","5","37","43.3%"
+
+post_execution[1]{phase,activity,start_min,end_min,duration_min,purpose}:
+  7,"VERIFICATION PHASE (Sentinels + Re-check)","39","70","31","Deploy Z-Guard, Cp Shadow, Boundary Check. Double-check all signs. Verify formula origins on paper."
+  8,"CONTINGENCY BUFFER (Unplanned Questions)","70","90","20","If new question appears, 20 min to identify which target it maps to and solve. OR pure strategic dominance walk."
+
+---
+PHASE BREAKDOWN (DETAILED):
+----------------------------
+
+PHASE 1 (0-6 minutes): Target 1.1 Sensible Heat Integration
+┌─────────────────────────────────────────────────────────────┐
+│ Minutes 0-1: Read question. Identify T₁, T₂, A, B, C, D      │
+│ Minutes 1-2: Calculate 3 temperature blocks (T diff, T²...)  │
+│ Minutes 2-4: Use M+ protocol to assemble chunks              │
+│ Minutes 4-5: Multiply by R (8.314). Extract ΔH               │
+│ Minutes 5-6: Z-Sentinel: Check ΔH is in 6000-17000 J/mol    │
+│ MARKS: 7/30 (+23 to go)                                       │
+└─────────────────────────────────────────────────────────────┘
+
+PHASE 2 (6-11 minutes): Target 1.2 Cubic EOS Iteration
+┌─────────────────────────────────────────────────────────────┐
+│ Minutes 6-7: Calculate Tr, Pr, α, a, b constants            │
+│ Minutes 7-9: Vapor iteration (ANS loop, 5 presses = button) │
+│ Minutes 9-10: Z-Guard verification (0.6 < Z < 0.95)        │
+│ Minutes 10-11: Liquid iteration OR note if Q only asks vapor │
+│ MARKS: 7/30 (+16 to go)                                       │
+└─────────────────────────────────────────────────────────────┘
+
+PHASE 3 (11-19 minutes): Target 1.3 Virial Isothermal Work
+┌─────────────────────────────────────────────────────────────┐
+│ Minutes 11-13: Find V₁ and V₂ using virial equation (iteration) │
+│ Minutes 13-15: Calculate Chunk 1 (ln term)                   │
+│ Minutes 15-16: Calculate Chunk 2 (B correction)              │
+│ Minutes 16-17: Calculate Chunk 3 (C correction)              │
+│ Minutes 17-18: M+ assembly and 0.1 multiplier (cm³·bar → J) │
+│ Minutes 18-19: Boundary-Check: W_virial/W_ideal ≈ 1.10-1.20│
+│ MARKS: 8/30 (+8 to go, buffer achieved)                      │
+└─────────────────────────────────────────────────────────────┘
+
+PHASE 4 (19-24 minutes): Target 2.1 SFEE (Nozzle/Compressor)
+┌─────────────────────────────────────────────────────────────┐
+│ Minutes 19-20: Read question. Draw single Control Volume box │
+│ Minutes 20-21: Identify inlet/outlet states. ΔH given?       │
+│ Minutes 21-22: Calculate kinetic energy: (u₂² - u₁²) / 2000  │
+│ Minutes 22-24: Solve SFEE: ΔH + KE = Q + Ws                 │
+│ MARKS: 4/30 (+4, safety buffer extended)                     │
+└─────────────────────────────────────────────────────────────┘
+
+PHASE 5 (24-32 minutes): Target 2.2 Ideal Gas PV Matrix
+┌─────────────────────────────────────────────────────────────┐
+│ Minutes 24-26: Identify process path (Isothermal/Isobaric...) │
+│ Minutes 26-28: Select correct formula (W, Q, ΔU, ΔH)         │
+│ Minutes 28-30: If comparing paths, calculate total work       │
+│ Minutes 30-31: Natural log arithmetic (ln or e^x on calc)    │
+│ Minutes 31-32: Verify answer sign (expansion = negative work) │
+│ MARKS: 6/30 (Total: 32/30, BUFFER ACHIEVED)                  │
+└─────────────────────────────────────────────────────────────┘
+
+PHASE 6 (32-39 minutes): Target 2.3 Open System Derivation
+┌─────────────────────────────────────────────────────────────┐
+│ Minutes 32-33: Draw Control Volume diagram (inlet, outlet, box) │
+│ Minutes 33-35: Write mass balance: dm_cv/dt = ṁ_in - ṁ_out  │
+│ Minutes 35-37: Write energy balance: Start from Monster Eq.  │
+│ Minutes 37-38: State assumption: Steady State → d/dt = 0     │
+│ Minutes 38-39: Simplify to SFEE. Explain U → H via PV term  │
+│ MARKS: 5/30 (Total: 37/30, EXAM OVER)                        │
+└─────────────────────────────────────────────────────────────┘
+
+STATUS AT MINUTE 39: VICTORY ACHIEVED
+┌─────────────────────────────────────────────────────────────┐
+│ Marks Earned: 37/30 (Buffer = +7)                             │
+│ Time Remaining: 51 minutes (5100% available time)             │
+│ Psychology: Dominance established. Apex predator mode.        │
+│ Next Move: VERIFICATION, not more solving.                    │
+└─────────────────────────────────────────────────────────────┘
+
+VERIFICATION PHASE (39-70 minutes): 31 minutes
+┌─────────────────────────────────────────────────────────────┐
+│ Minutes 39-45: Deploy Z-Guard (Target 1.2)                   │
+│              → Verify V = (PV)/(RT) in 0.6-0.95 range       │
+│                                                               │
+│ Minutes 45-55: Deploy Cp Shadow (Target 1.1)                 │
+│              → Check ΔH within ±5% of linear approx          │
+│                                                               │
+│ Minutes 55-70: Deploy Boundary Check (Target 1.3)            │
+│              → Verify W_virial / W_ideal = 1.10-1.20        │
+│              → Double-check all signs on work formulas        │
+│              → Verify 0.1 multiplier was applied              │
+│                                                               │
+│ Quality Control: Review all numerical entries for typos       │
+└─────────────────────────────────────────────────────────────┘
+
+CONTINGENCY BUFFER (70-90 minutes): 20 minutes
+┌─────────────────────────────────────────────────────────────┐
+│ If new/unexpected question appears:                           │
+│  → Map to 1 of 6 targets                                      │
+│  → Identify which slide it clones                             │
+│  → Execute the template                                       │
+│  → Deploy appropriate sentinel                                │
+│                                                               │
+│ If no new questions:                                          │
+│  → Mental rehearsal of answer techniques                      │
+│  → Psychological confidence walk-through                      │
+│  → Physical exam submission ritual                            │
+│                                                               │
+│ Outcome: Zero panic. Pure dominance.                          │
+└─────────────────────────────────────────────────────────────┘
+
+---
+CUMULATIVE TRACKING TABLE:
+---------------------------
+
+Minute | Target | Marks Earned | Cumulative | Exam Progress | Psychological State
+   0   | —      | —            | 0/30       | 0%           | ALERT (beginning)
+   6   | 1.1    | +7           | 7/30       | 23%          | WARM-UP COMPLETE
+  11   | 1.2    | +7           | 14/30      | 47%          | CONFIDENCE RISING
+  19   | 1.3    | +8           | 22/30      | 73%          | MOMENTUM ACHIEVED
+  24   | 2.1    | +4           | 26/30      | 87%          | BUFFER CREATED
+  32   | 2.2    | +6           | 32/30      | 107%         | VICTORY SEALED
+  39   | 2.3    | +5           | 37/30      | 123%         | DOMINANCE ESTABLISHED
+  70   | —      | —            | 37/30      | 123%         | VERIFICATION COMPLETE
+  90   | —      | —            | 37/30      | 123%         | EXAM END (Surplus = 51 min unused)
+
+---
+PSYCHOLOGICAL PACING:
+---------------------
+
+PHASE 1 (0-6 min): "Warm-up. Build muscle memory. This is easy."
+PHASE 2 (6-11 min): "Iteration smooth. Z-check passed. Confidence locked."
+PHASE 3 (11-19 min): "Most complex problem. Time to strike. 8 marks in 8 min. LOCKED."
+PHASE 4 (19-24 min): "Free marks. Speed-run. No thinking required."
+PHASE 5 (24-32 min): "Path selection. Algebra game. Already won."
+PHASE 6 (32-39 min): "Theory proof. Draw box, state steady state. Professor ego satisfied."
+
+TRANSITION (39 min): "I've secured 37/30 marks. I am not racing anymore; I am dominating."
+
+PHASE 7 (39-70 min): "Verification. Perfection. Triple-check every sentinel."
+PHASE 8 (70-90 min): "Psychological victory lap. The board was predictable. I hacked it."
+
+---
+CRITICAL TIMING NOTES:
+-----------------------
+
+⏱️  "Warm-up" (Phase 1): Must stay ≤6 min. If you take 8 min on Target 1.1, you 
+   lose 2 min of surplus. Discipline required. It's the easiest target; treat it as such.
+
+⏱️  "Complexity Peak" (Phase 3): Target 1.3 is the hardest (8 marks). Allocated 
+   8 min. If it takes 10 min, you've lost 2 min but still have 49-min surplus. 
+   NOT a crisis. But practice this target to lock it in 8 min.
+
+⏱️  "Victory Point" (Minute 32): After Phase 5, you have 32/30 marks. STOP seeking 
+   more marks. The goal is not maximum marks; it is PSYCHOLOGICAL DOMINANCE. Shift 
+   to verification mode.
+
+⏱️  "Verification Window" (39-70 min): Deploy sentinels SLOWLY. Do not rush. This 
+   is where precision beats speed. A 10-second Z-check that catches an error is 
+   worth more than finding one new mark.
+
+---
+SURPLUS PSYCHOLOGY:
+-------------------
+
+Normal Student: "I have 90 min and 30 marks to solve. I'm racing."
+Result: Stress, errors, 14-17 marks.
+
+Gemini-Trained Student: "I have 39 min to solve 37 marks. Then 51 min to perfect."
+Result: Dominance, precision, 24.5 marks.
+
+**The surplus IS the victory.** Do not use it to find more marks; use it to 
+eliminate errors and perfect presentation.
+
+---
